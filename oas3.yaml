@@ -257,7 +257,7 @@ paths:
         '400':
           description: bad input parameter
 
-  '/llm_annotations/summary/{pdbid}.json':
+  '/llm_annotations/summary/{pdb_id}.json':
    get:
       parameters:
         - name: pdb_id
@@ -1853,3 +1853,90 @@ components:
                   type: integer
                   example: 1
                   description: "Remark R350"
+
+    LLM_annotations:
+      title: llm_annotations
+      type: object
+      description: "LLM-derived annotations"
+      properties:
+          pdb_id:
+              title: PDB_id
+              type: object
+              properties:
+                  datatype:
+                      type: string
+                      example: "ANNOTATIONS"
+                      description: "The type of data represented"
+                  data:
+                      title: data
+                      type: object
+                      description: "The actual annotation data"
+                      properties:
+                          name:
+                              type: string
+                              example: "IUCr"
+                              description: "Name of the resource, annotation, etc."
+                          accession:
+                              type: string
+                              example: "IUCr"
+                              description: "A unique identifier for the resource, annotation, etc."
+                          dataType:
+                              type: string
+                              example: "IUCr"
+                              description: "The data type provided"
+                          residues:
+                              title: residues
+                              description: "A list of residue objects."
+                              type: object
+                              items:
+                                  startIndex:
+                                      type: integer
+                                      example: 42
+                                      description: "(start) residue sequence position"
+                                  endIndex:
+                                      type: integer
+                                      example: 42
+                                      description: "(end) residue sequence position"
+                                  indexType:
+                                      type: string
+                                      example: "PDB"
+                                      description: "source used for sequence indexing/counting"
+                                  startCode:
+                                      type: string
+                                      example: "ALA"
+                                      description: "(start) residue amino acid name"
+                                  endCode:
+                                      type: string
+                                      example: "ALA"
+                                      description: "(end) residue amino acid name"
+                                  additionalData:
+                                      type: array
+                                      items:
+                                      type: object
+                                      description: "List of annottaions for residue"
+                                      properties:
+                                          pubmedId:
+                                              type: integer
+                                              description: "A valid PubMed identifier"
+                                              example: 1234567
+                                          pmcId:
+                                              type: string
+                                              description: "A valid PubMedCentral identifier"
+                                              example: "PMC1234567"
+                                          pdbResidue:
+                                              type: integer
+                                              description: "A PDB residue"
+                                              example: 42
+                                          pdbChain:
+                                              type: string
+                                              description: "A PDB chain"
+                                              example: "A"
+                                          uniprotAccession:
+                                              type: string
+                                              description: "A UniProt accession"
+                                              example: "P12345"
+                                          uniprotResidue:
+                                              type: integer
+                                              description: "A UniProt residue"
+                                              example: 42
+

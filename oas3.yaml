@@ -257,6 +257,30 @@ paths:
         '400':
           description: bad input parameter
 
+  '/llm_annotations/summary/{pdbid}.json':
+   get:
+      parameters:
+        - name: pdb_id
+          description: A PDB identifier
+          in: path
+          required: true
+          example: '1cbs'
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: >-
+            Response is a collection of LLM annotations for a given PDB entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/llm_annotations'
+        '501':
+          description: If endpoint is not implemented
+        '400':
+          description: bad input parameter
+
 servers:
   - url: 'https://www.ebi.ac.uk/pdbe/api/v2'
     description: PDBe API RESTful API service

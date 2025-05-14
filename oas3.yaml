@@ -1949,10 +1949,6 @@ components:
             $ref: "#/components/schemas/residue"
         additionalData:
           $ref: "#/components/schemas/additional_data"
-        dataType:
-          type: string
-          description: Type of data provided in the section.
-          example: "ANNOTATIONS"
 
     residue:
       type: object
@@ -1990,9 +1986,29 @@ components:
           type: string
           description: "A valid PubMedCentral identifier"
           example: "PMC1234567"
+        doi:
+          type: string
+          description: "A valid Digital Object Identifier"
+          example: "10.1234/abcd.efgh"
+        primaryCitation:
+          type: string
+          description: "A valid primary citation"
+          example: "Y"
+        openAccess:
+          type: string
+          description: "A valid open access identifier"
+          example: "Y"
+        pdbId:
+          type: string
+          description: "A valid PDB identifier"
+          example: "1a2b"
         pdbResidue:
           type: integer
           description: "A PDB residue"
+          example: 42
+        authorResidueNumber:
+          type: integer
+          description: "An author residue number"
           example: 42
         pdbChain:
           type: string
@@ -2006,3 +2022,27 @@ components:
           type: integer
           description: "A UniProt residue"
           example: 42
+        sentence:
+          type: string
+          description: "A sentence containing the annotation"
+          example: "This is a sample sentence."
+        section:
+          type: string
+          description: "Section in publication annotation was found"
+          example: "This is a sample section."
+        exact:
+          type: string
+          description: "Exact annotation text"
+          example: "This is a sample exact annotation."
+        entityType:
+          type: string
+          description: "Type of entity (e.g., protein, nucleic acid, etc.)"
+          example: "protein"
+        annotator:
+          type: string
+          description: "Name of the annotator"
+          example: "John Doe"
+        aiScore:
+          type: float
+          description: "AI confidence score for the annotation"
+          example: 0.95
